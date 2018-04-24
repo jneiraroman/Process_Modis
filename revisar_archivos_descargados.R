@@ -18,20 +18,20 @@ setwd("C:\\MODIS")
 files <- list.files(pattern = "hdf$")
 
 #use the prevoius list to create a datafrme that split the values of the year, day, h and v that are 
-test2=data.frame(a?o =substr(files, 10, 13), dia=substr(files, 14, 16), h= substr(files,19,20),  v=substr(files,22,23))
+test2=data.frame(año =substr(files, 10, 13), dia=substr(files, 14, 16), h= substr(files,19,20),  v=substr(files,22,23))
 
 
 
 ################## chequea que sea asi. los gsub son para quitar los espacios en blanco de los datos
 #fecha <- as.Date( as.integer(gsub(' ',' ', test2$dia,fixed=T)), 
-#                  origin= as.Date( paste( as.character( gsub(' ',' ', test2$a?o, fixed=TRUE)), '-01-01',sep='')))
+#                  origin= as.Date( paste( as.character( gsub(' ',' ', test2$año, fixed=TRUE)), '-01-01',sep='')))
 fecha <- as.Date( as.integer(trimws(test2$dia)), 
-                  origin=as.Date(paste(as.character(trimws(test2$a?o)),'-01-01',sep='')))
+                  origin=as.Date(paste(as.character(trimws(test2$año)),'-01-01',sep='')))
 
 ##################
 
 
-#test=data.frame(a?o=rep(2001:2004, each=365), dia=rep(001:365, each=8),h=c(11,11,11,12,12,13,13,14),v=c(10,11,12,12,13,13,14,14))
+#test=data.frame(año=rep(2001:2004, each=365), dia=rep(001:365, each=8),h=c(11,11,11,12,12,13,13,14),v=c(10,11,12,12,13,13,14,14))
 
 #Create a dataframe whit the expected files in which each columns is a factor, that way it will match with the 
 # structure of the dataframe test2. To check the struture of the dataframes use:
@@ -39,9 +39,9 @@ fecha <- as.Date( as.integer(trimws(test2$dia)),
 #str(test1) 
 # 
 #
-#test1=data.frame(a?o=rep(2004:2004, each=365), dia=rep(sprintf('%0.3d', 1:365),each=8),h=c(11,11,11,12,12,13,13,14),v=c(10,11,12,12,13,13,14,14))
+#test1=data.frame(año=rep(2004:2004, each=365), dia=rep(sprintf('%0.3d', 1:365),each=8),h=c(11,11,11,12,12,13,13,14),v=c(10,11,12,12,13,13,14,14))
 
-test1=data.frame(a?o=as.factor(rep(2004:2004, each=365)), dia=as.factor(rep(sprintf('%0.3d', 1:365),each=8)),h=as.factor(c(11,11,11,12,12,13,13,14)),v=as.factor(c(10,11,12,12,13,13,14,14)))
+test1=data.frame(año=as.factor(rep(2004:2004, each=365)), dia=as.factor(rep(sprintf('%0.3d', 1:365),each=8)),h=as.factor(c(11,11,11,12,12,13,13,14)),v=as.factor(c(10,11,12,12,13,13,14,14)))
 
 #Use these two lines if you want to check the integrity of the created dataframes
 #test
@@ -55,11 +55,11 @@ b=anti_join(test1,test2)
 
 #saving the a object in a csv file
 
-date_info <- with(a, paste(a?o, dia))
+date_info <- with(a, paste(año, dia))
 strptime(date_info, "%Y %j")
 as.Date(a$dia, origin= "2004-01-01")
 
-strptime(paste(a$a?o, a$dia), format="%Y %j")
+strptime(paste(a$año, a$dia), format="%Y %j")
 
 
 #para descargar los archivos modis 
@@ -87,7 +87,7 @@ setwd("C:\\MODIS")
 
 
 
-#defino x = producto de la versi?n 6
+#defino x = producto de la version 6
 
 x='MOD11A1'
 i=1
