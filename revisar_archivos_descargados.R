@@ -23,8 +23,11 @@ test2=data.frame(a?o =substr(files, 10, 13), dia=substr(files, 14, 16), h= subst
 
 
 ################## chequea que sea asi. los gsub son para quitar los espacios en blanco de los datos
-fecha <- as.Date( as.integer(gsub(' ',' ', test2$dia,fixed=T)), 
-                  origin= as.Date( paste( as.character( gsub(' ',' ', test2$a?o, fixed=TRUE)), '-01-01',sep='')))
+#fecha <- as.Date( as.integer(gsub(' ',' ', test2$dia,fixed=T)), 
+#                  origin= as.Date( paste( as.character( gsub(' ',' ', test2$a?o, fixed=TRUE)), '-01-01',sep='')))
+fecha <- as.Date( as.integer(trimws(test2$dia)), 
+                  origin= as.Date( paste( as.character( trimws(test2$a?o)), '-01-01',sep='')))
+
 ##################
 
 
