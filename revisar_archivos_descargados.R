@@ -8,9 +8,14 @@
 #[ES] Carga librerias
 library(dplyr)
 
-#[EN] Set Working directory
-#[ES] Establecer directorio de trabajo
-setwd("C:\\MODIS")
+#[EN] Set Working directory, set up for test in different computers without change the code
+#[ES] Establecer directorio de trabajo, en mas de un pc de trabajo
+
+windir <- 'C:\\MODIS'
+lindir <- '/home/casa/'
+workdir<- ifelse(dir.exists(file.path('C:\\MODIS')),windir,lindir)
+
+setwd(workdir)
 
 #[EN] create a list of the names of the  files that match with hdf extension on the 
 #working directory 
