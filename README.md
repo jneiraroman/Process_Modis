@@ -4,4 +4,4 @@
 # Process_Modis
 
 aaa
->>>>>>> Initial commit
+arreglando bash
